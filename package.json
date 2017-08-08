@@ -1,0 +1,15 @@
+{
+  "name": "flight-center",
+  "version": "1.0.0",
+  "description": "Flight Center Code Challenge",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Sokun, Chorn",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "request": "^2.81.0"
+  }
+}
