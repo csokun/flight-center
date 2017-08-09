@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script
+    src="http://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  </head>
+  <body>
+      <div id="outbound"></div>
+      <div id="inbound"></div>
+  </body>
+    <script src="/js/client.js"></script>
+    <script>
+        $.get('http://node.locomote.com/code-task/airports?q=Melbourne', (data) => {
+            console.log(data);
+        });
+    </script>
+</html>

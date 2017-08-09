@@ -13,3 +13,4 @@ Flight API wrapper.
 ## Requirements
 
  * `Node v8.x.x`
+ * `ES6+`

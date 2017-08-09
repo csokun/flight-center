@@ -10,7 +10,7 @@ app.use(function (req, res, next) {
     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
     res.header('Expires', '-1');
     res.header('Pragma', 'no-cache');
-    next()
+    next();
 });
 
 app.get('/airlines', (req, res, next) => {
@@ -33,11 +33,13 @@ app.get('/airports', (req, res, next) => {
 });
 
 app.get('/search', (req, res, next) => {
-    getAsync('${FLIGHT_API_BASE_URL}/airlines').then(result => {
+    let { from, to, date } = req.query;
+
+    getAsync(`${FLIGHT_API_BASE_URL}/airlines`).then(result => {
         let airlines = JSON.parse(result.body);
 
         let queries = airlines.map(airline => {
-            return getAsync(`${FLIGHT_API_BASE_URL}/flight_search/${airline.code}?date=2018-09-02&from=SYD&to=JFK`)
+            return getAsync(`${FLIGHT_API_BASE_URL}/flight_search/${airline.code}?date=${date}&from=${from}&to=${to}`)
                 .then(matched => {
                     try {
                         let schedules = JSON.parse(matched.body);
@@ -55,9 +57,4 @@ app.get('/search', (req, res, next) => {
     }).catch(next);
 });
 
-// startup
-app.set('port', process.env.PORT || 3000);
-
-var server = app.listen(app.get('port'), "0.0.0.0", function() {
-  console.log('Express server listening on port ' + server.address().port);
-});
+module.exports = app;

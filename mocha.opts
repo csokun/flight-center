@@ -1,0 +1,4 @@
+__tests__/*.spec.js
+--bail
+--timeout 10000
+--reporter spec
